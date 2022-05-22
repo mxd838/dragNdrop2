@@ -6,26 +6,26 @@ const movingDivTwo = document.querySelector('#dragMe2')
 
 // Functions
 const moveDivOne = (e) => {
-    // console.log(e)
+    // Gives a name to the moved element for the transfer: item
+    // A way to recognize it in the DOM : e.target.id
     e.dataTransfer.setData('item', e.target.id)
 }
 
 const moveDivTwo = (e) => {
-    // console.log(e)
     e.dataTransfer.setData('item', e.target.id)
 }
 
 const dragOver = (e) => {
-    // console.log(e)
+    // Prevent default div behavior (not accept dragged elements)
     e.preventDefault()
 }
 
 const drop = (e) => {
-    // console.log(e.dataTransfer.getData(moveDivOne))
-    // console.log(e.dataTransfer.getData(moveDivTwo))
-
+    // Only one div moving at a time so no naming problemns
     const movingDivData = e.dataTransfer.getData('item')
+    // Get the div retrieved from the data transfer
     const movedDiv = document.getElementById(movingDivData)
+    // Insert the moved div to the parent div over which it is positioned
     e.target.appendChild(movedDiv)
 }
 
@@ -34,6 +34,7 @@ const drop = (e) => {
 // Event listeners
 movingDivOne.addEventListener('dragstart', moveDivOne)
 movingDivTwo.addEventListener('dragstart', moveDivTwo)
+// Loop through the node list to add event listeners to each of them
 boxes.forEach(box => {
     box.addEventListener('dragover', dragOver)
     box.addEventListener('drop', drop)
