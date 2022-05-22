@@ -7,12 +7,12 @@ const movingDivTwo = document.querySelector('#dragMe2')
 // Functions
 const moveDivOne = (e) => {
     // console.log(e)
-    e.dataTransfer.setData(movingDivOne, e.target.id)
+    e.dataTransfer.setData('item', e.target.id)
 }
 
 const moveDivTwo = (e) => {
     // console.log(e)
-    e.dataTransfer.setData(movingDivTwo, e.target.id)
+    e.dataTransfer.setData('item', e.target.id)
 }
 
 const dragOver = (e) => {
@@ -24,7 +24,7 @@ const drop = (e) => {
     // console.log(e.dataTransfer.getData(moveDivOne))
     // console.log(e.dataTransfer.getData(moveDivTwo))
 
-    const movingDivData = e.dataTransfer.getData(movingDivTwo)
+    const movingDivData = e.dataTransfer.getData('item')
     const movedDiv = document.getElementById(movingDivData)
     e.target.appendChild(movedDiv)
 }
